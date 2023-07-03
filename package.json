@@ -1,0 +1,18 @@
+{
+  "name": "dev.heckteck.tomatostates",
+  "version": "0.0.1",
+  "displayName": "TomatoStates",
+  "description": "A practical state machine for unity.",
+  "samples": [
+    {
+      "displayName": "Color Example",
+      "description": "Example of switching colors on an image using the state machine.",
+      "path": "Samples~/Example"
+    }
+  ],
+  "type": "library",
+  "dependencies": {
+    "com.unity.inputsystem": ""
+  },
+  "hideInEditor": false
+}
