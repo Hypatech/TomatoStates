@@ -1,7 +1,13 @@
 # TomatoStates
 A practical state machine library designed for Unity.
 
-# Usage
+## Installation
+Add to the Unity Package Manager via git URL: `https://github.com/Hypatech/TomatoStates.git`
+
+This can be done by hitting the + button at the top left of the Package Manager window.
+![image](https://github.com/Hypatech/TomatoStates/assets/27899907/3ad3b9eb-3bc3-41f2-bf21-e73d4a984c6e)
+
+## Usage
 Documentation + more detailed usage guide WIP.
 
 First, you must define all the states you wish to use in your state machine. 
