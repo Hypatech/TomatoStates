@@ -1,6 +1,8 @@
 # TomatoStates
 A practical state machine library designed for Unity.
 
+***NOT HEAVILY TESTED. WILL PROBABLY BE BUGGY FOR NOW!! PLEASE REPORT ISSUES. THANKS***
+
 ## Installation
 Add to the Unity Package Manager via git URL: `https://github.com/Hypatech/TomatoStates.git`
 
