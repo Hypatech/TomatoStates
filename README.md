@@ -26,7 +26,7 @@ They can be fired manually:
 activate.Fire();
 ```
 
-Or, they can subscribe to an Action, InputAction, or UnityEvent. ***Make sure to call Unsubscribe when the trigger is no longer needed to avoid memory leaks.***
+Or, they can subscribe to an Action, InputAction, or UnityEvent. ***Make sure to call Unsubscribe for every subscribed action, to avoid memory leaks.***
 ```cs
 Action someAction;
 activate.Subscribe(ref someAction);
