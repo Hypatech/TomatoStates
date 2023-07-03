@@ -31,22 +31,22 @@ namespace TomatoStates
 
 	public static class TriggerUnityExtensions
 	{
-		public static void Subscribe(this Trigger trigger, ref InputAction action)
+		public static void Subscribe(this Trigger trigger, InputAction action)
 		{
 			action.performed += trigger.Fire;
 		}
 
-		public static void Unsubscribe(this Trigger trigger, ref InputAction action)
+		public static void Unsubscribe(this Trigger trigger, InputAction action)
 		{
 			action.performed -= trigger.Fire;
 		}
 
-		public static void Subscribe(this Trigger trigger, ref UnityEvent unityEvent)
+		public static void Subscribe(this Trigger trigger, UnityEvent unityEvent)
 		{
 			unityEvent.AddListener(trigger.Fire);
 		}
 
-		public static void Unsubscribe(this Trigger trigger, ref UnityEvent unityEvent)
+		public static void Unsubscribe(this Trigger trigger, UnityEvent unityEvent)
 		{
 			unityEvent.RemoveListener(trigger.Fire);
 		}
