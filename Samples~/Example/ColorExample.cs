@@ -36,20 +36,20 @@ public class ColorExample : MonoBehaviour
 		colorSwitchKey.Enable();
 
 		colorSwitch = new Trigger();
-		colorSwitch.Subscribe(ref colorSwitchKey);
+		colorSwitch.Subscribe(colorSwitchKey);
 
 		modeSwitchKey = new InputAction("Mode Switch", binding: Keyboard.current.mKey.path);
 		modeSwitchKey.Enable();
 
 		modeSwitch = new Trigger();
-		modeSwitch.Subscribe(ref modeSwitchKey);
+		modeSwitch.Subscribe(modeSwitchKey);
 	}
 
 	void OnDestroy()
 	{
 		sm?.Dispose();
-		modeSwitch.Unsubscribe(ref modeSwitchKey);
-		colorSwitch.Unsubscribe(ref colorSwitchKey);
+		modeSwitch.Unsubscribe(modeSwitchKey);
+		colorSwitch.Unsubscribe(colorSwitchKey);
 	}
 
 	SubStateMachine BuildColorMachine()
