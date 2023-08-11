@@ -7,12 +7,14 @@ namespace TomatoStates
 	{
 		public IState target;
 		public List<Trigger> triggers;
+		public List<Action> callbacks;
 
 		public Transition(IState targetState)
 		{
 			this.target = targetState;
 			this.triggers = new List<Trigger>();
 			this.conditions = new List<Func<bool>>();
+			this.callbacks = new List<Action>();
 		}
 
 		public Transition If(Func<bool> condition)
@@ -25,6 +27,10 @@ namespace TomatoStates
 		{
 			triggers.Add(trigger);
 			return this;
+		}
+
+		public Transition Do(Action action){
+			callbacks.Add(action);
 		}
 
 		public bool ShouldTransition()

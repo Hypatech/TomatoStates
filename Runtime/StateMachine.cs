@@ -53,6 +53,9 @@ namespace TomatoStates
 
 			if (transition.ShouldTransition())
 			{
+				foreach(var callback in transition.callbacks){
+					callback?.Invoke();
+				}
 				ChangeState(transition.target);
 			}
 		}
