@@ -51,12 +51,14 @@ namespace TomatoStates
 		{
 			var transitions = currentTransitionDictionary[which];
 
-			if (transition.ShouldTransition())
-			{
-				foreach(var callback in transition.callbacks){
-					callback?.Invoke();
+			foreach(var transition in transitions){
+				if (transition.ShouldTransition())
+				{
+					foreach(var callback in transition.callbacks){
+						callback?.Invoke();
+					}
+					ChangeState(transition.target);
 				}
-				ChangeState(transition.target);
 			}
 		}
 
