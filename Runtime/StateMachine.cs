@@ -45,11 +45,11 @@ namespace TomatoStates
 		}
 
 
-		Dictionary<Trigger, Transition> currentTransitionDictionary = new Dictionary<Trigger, Transition>();
+		Dictionary<Trigger, List<Transition>> currentTransitionDictionary = new Dictionary<Trigger, List<Transition>>();
 
 		void TriggerFired(Trigger which)
 		{
-			var transition = currentTransitionDictionary[which];
+			var transitions = currentTransitionDictionary[which];
 
 			if (transition.ShouldTransition())
 			{
@@ -73,7 +73,11 @@ namespace TomatoStates
 			{
 				foreach (var trigger in transition.triggers)
 				{
-					currentTransitionDictionary.Add(trigger, transition);
+					if(!currentTransitionDictionary.ContainsKey(trigger)){
+						currentTransitionDictionary.Add(trigger, new List<Transition>());
+					}
+
+					currentTransitionDictionary[trigger].Add(transition);
 				}
 			}
 		}
