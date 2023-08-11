@@ -31,6 +31,7 @@ namespace TomatoStates
 
 		public Transition Do(Action action){
 			callbacks.Add(action);
+			return this;
 		}
 
 		public bool ShouldTransition()
