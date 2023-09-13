@@ -49,6 +49,10 @@ namespace TomatoStates
 
 		void TriggerFired(Trigger which)
 		{
+			if(!currentTransitionDictionary.ContainsKey(which)){
+				return;
+			}
+
 			var transitions = currentTransitionDictionary[which];
 
 			foreach(var transition in transitions){
