@@ -12,7 +12,7 @@ namespace TomatoStates
 		void Exit();
 	}
 
-	public sealed class State : IState
+	public class State : IState
 	{
 		public event Action Entered;
 		public event Action Exited;
