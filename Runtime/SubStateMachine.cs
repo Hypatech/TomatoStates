@@ -5,6 +5,8 @@ namespace TomatoStates
 	public class SubStateMachine : IState
 	{
 		public List<Transition> Transitions { get; private set; }
+		public IState subState => machine.currentState;
+
 		IState enterState;
 		StateMachine machine;
 
