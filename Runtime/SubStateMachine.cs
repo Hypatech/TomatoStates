@@ -13,7 +13,7 @@ namespace TomatoStates
 		public SubStateMachine(IState enterState)
 		{
 			this.enterState = enterState;
-			this.machine = new StateMachine(enterState);
+			this.machine = new StateMachine(null);
 			this.Transitions = new List<Transition>();
 		}
 
