@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace TomatoStates
 {
-	public class StateMachine : IDisposable
+	public class StateMachine : IDisposable, IStateContainer
 	{
 		public Action Ticked;
 
@@ -12,6 +12,14 @@ namespace TomatoStates
 		public StateMachine(IState startState)
 		{
 			ChangeState(startState);
+		}
+
+		public IState GetDeepestState(){
+			if(currentState is IStateContainer container){
+				return container.GetDeepestState();
+			}
+
+			return currentState;
 		}
 
 		public void ChangeState(IState newState)

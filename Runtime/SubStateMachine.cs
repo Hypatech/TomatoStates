@@ -26,12 +26,6 @@ namespace TomatoStates
 		public void Exit() => machine.ChangeState(null);
 
 
-		public IState GetDeepestState(){
-			if(subState is IStateContainer container){
-				return container.GetDeepestState();
-			}
-
-			return subState;
-		}
+		public IState GetDeepestState() => machine.GetDeepestState();
 	}
 }
