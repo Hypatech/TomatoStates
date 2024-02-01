@@ -49,4 +49,30 @@ namespace TomatoStates
 
 		List<Func<bool>> conditions;
 	}
+
+	public static class TransitionExtensions{
+		public static Transition[] If(this Transition[] transitions, Func<bool> condition){
+			foreach(var transition in transitions){
+				transition.If(condition);
+			}
+
+			return transitions;
+		}
+
+		public static Transition[] On(this Transition[] transitions, Trigger trigger){
+			foreach(var transition in transitions){
+				transition.On(trigger);
+			}
+
+			return transitions;
+		}
+
+		public static Transition[] Do(this Transition[] transitions, Action action){
+			foreach(var transition in transitions){
+				transition.Do(action);
+			}
+
+			return transitions;
+		}
+	}
 }

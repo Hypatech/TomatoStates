@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace TomatoStates
 {
@@ -40,6 +41,15 @@ namespace TomatoStates
 		{
 			var trans = new Transition(newState);
 			state.Transitions.Add(trans);
+
+			return trans;
+		}
+
+		public static Transition[] To(this IState[] states, IState newState){
+			var trans = new Transition[states.Length];
+			for(var i = 0; i < states.Length; i++){
+				trans[i] = states[i].To(newState);
+			}
 
 			return trans;
 		}

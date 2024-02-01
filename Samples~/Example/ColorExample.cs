@@ -7,25 +7,42 @@ public class ColorExample : MonoBehaviour
 {
 	[SerializeField] Image img;
 
-	InputAction colorSwitchKey, modeSwitchKey;
-	Trigger colorSwitch, modeSwitch;
+	InputAction colorSwitchKey, modeSwitchKey, toggleYellowKey;
+	Trigger colorSwitch, modeSwitch, toggleYellow;
 
 	StateMachine sm;
 
 	void Start()
 	{
 		BuildTriggers();
+		
 
 		var color = BuildColorMachine();
 		var grayscale = BuildGrayscaleMachine();
+		var yellow = new State(onEnter: () => img.color = Color.yellow);
 
 		color
 			.To(grayscale)
-			.On(modeSwitch);
+			.On(modeSwitch)
+		;
 
 		grayscale
 			.To(color)
-			.On(modeSwitch);
+			.On(modeSwitch)
+			.Do(() => Debug.Log("grayscale to color"))
+		;
+
+		new IState[] {color, grayscale}
+			.To(yellow)
+			.On(toggleYellow)
+			.Do(() => Debug.Log("either to yellow"))
+		;
+
+		yellow
+			.To(grayscale)
+			.On(toggleYellow)
+		;
+
 
 		sm = new StateMachine(grayscale);
 	}
@@ -43,6 +60,12 @@ public class ColorExample : MonoBehaviour
 
 		modeSwitch = new Trigger();
 		modeSwitch.Subscribe(modeSwitchKey);
+
+		toggleYellowKey = new InputAction("Toggle", binding: Keyboard.current.enterKey.path);
+		toggleYellowKey.Enable();
+
+		toggleYellow = new Trigger();
+		toggleYellow.Subscribe(toggleYellowKey);
 	}
 
 	void OnDestroy()
@@ -60,7 +83,9 @@ public class ColorExample : MonoBehaviour
 
 		red
 			.To(green)
-			.On(colorSwitch);
+			.On(colorSwitch)
+			.Do(() => Debug.Log("red to green"))
+		;
 
 		green
 			.To(blue)
