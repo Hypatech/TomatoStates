@@ -28,7 +28,7 @@ namespace TomatoStates
 
 		public IState GetDeepestState(){
 			if(subState is IStateContainer container){
-				return subState.GetDeepestState();
+				return container.GetDeepestState();
 			}
 
 			return subState;
