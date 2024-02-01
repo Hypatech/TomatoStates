@@ -1,6 +1,6 @@
 {
   "name": "dev.heckteck.tomatostates",
-  "version": "0.0.9",
+  "version": "0.1.0",
   "displayName": "TomatoStates",
   "description": "A practical state machine for unity.",
   "samples": [
